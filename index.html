@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            margin: 20px;
+            margin: 13px;
             padding: 0;
             color: #333;
             background-color: #f8f4e3;
@@ -59,9 +59,6 @@
         }
 
         section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             padding: 1em;
             background-color: #f8f4e3;
             border: none;
@@ -81,16 +78,15 @@
         img {
             width: 100%;
             max-height: none;
-            margin: 10px;
-            border-radius: 5px;
-            max-height: 400px;
-            object-fit: cover; /* 이미지의 비율 유지하며 채우기 */
+            margin: none;
+            border-radius: none;
             cursor: pointer; /* 클릭 가능한 커서로 변경 */
         }
 
         figcaption {
             color: #333;
             margin-top: 5px;
+            font-size: 14px;
         }
 
         footer {
@@ -106,24 +102,6 @@
             font-size: 14px; /* 저작권 표시 글자 크기 조절 */
         }
 
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        #overlay img {
-            max-width: 80%;
-            max-height: 80%;
-            border-radius: 5px;
-        }
 
         button {
             border: none; /* 테두리 없애기 */
@@ -165,15 +143,41 @@
     </header>
 
     <section id="photoSection">
-        <figure data-date="2027-03-10" onclick="openOverlay('표지.png', '표지', '분류')">
+        <figure data-date="2027-03-10">
             <img src="표지.png" alt="표지" data-category="분류">
             <figcaption></figcaption>
         </figure>
-        <figure data-date="2022-08-13" onclick="openOverlay('거꾸로여덟팔나비.JPG', '거꾸로여덟팔나비', '나비목')">
+        <figure data-date="2022-08-13">
             <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
             <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
         </figure>
-        <figure data-date="2023-03-10" onclick="openOverlay('path/to/your/photo3.jpg', '사진 설명 3', '메뚜기목')">
+        <figure data-date="2022-08-11">
+            <img src="곧은띠비단명나방.JPG" alt="곧은띠비단명나방" data-category="나비목">
+            <figcaption><i>Hypsopygia glaucinalis </i>(Linnaeus, 1758)<br>2022.8.11. 강원도 태백시 태백산 <strong>곧은띠비단명나방</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure><figure data-date="2022-08-13">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure>
+
+        <figure data-date="2023-03-10">
             <img src="path/to/your/photo3.jpg" alt="사진 설명 3" data-category="메뚜기목">
             <figcaption>사진 설명 3</figcaption>
         </figure>
@@ -183,12 +187,16 @@
         <p>&copy; 2023 Jaebin Lee. All rights reserved.</p>
     </footer>
 
-    <!-- 오버레이 창 -->
-    <div id="overlay" onclick="closeOverlay()">
-        <img id="overlayImage" src="" alt="">
     </div>
 
     <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+                // 페이지 로드 시 초기 카테고리 설정
+                document.getElementById("categoryFilter").value = "분류";
+                filterByCategory();
+              });
+
         function filterByCategory() {
             var selectedCategory = document.getElementById("categoryFilter").value;
             var photos = document.querySelectorAll("#photoSection figure");
@@ -202,20 +210,6 @@
                     photo.style.display = "none";
                 }
             });
-        }
-
-        function openOverlay(imagePath, description, category) {
-            var overlay = document.getElementById("overlay");
-            var overlayImage = document.getElementById("overlayImage");
-
-            overlayImage.src = imagePath;
-            overlayImage.alt = description;
-            overlay.style.display = "flex";
-        }
-
-        function closeOverlay() {
-            var overlay = document.getElementById("overlay");
-            overlay.style.display = "none";
         }
 
         // 사진 정렬 함수 추가
