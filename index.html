@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insect Observation Book</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 20px;
+            padding: 0;
+            color: #333;
+            background-color: #f8f4e3;
+            border: 5px solid #006400;
+        }
+
+        header {
+            background-color: #f8f4e3;
+            text-align: center;
+            padding: 3em 1em;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 700;
+            color: #000;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #000;
+            margin: 5px 0; /* 여백 조절 */
+            font-size: 24px;
+        }
+
+        .search-bar-container {
+            background-color: #f8f4e3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 5px;
+            background-color: #f8f4e3;
+            margin-bottom: 10px;
+            border: none; /* 테두리 없앰 */
+        }
+
+        input[type="text"], select {
+            padding: 8px;
+            margin: 5px;
+            box-sizing: border-box;
+            width: calc(50% - 10px);
+            border: none; /* 테두리 없앰 */
+            border-radius: 5px;
+            font-size: 12px;
+            outline: none; /* 기본 포커스 효과 제거 */
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1em;
+            background-color: #f8f4e3;
+            border: none;
+            margin: 10px;
+        }
+
+        figure {
+            text-align: center;
+            margin: 0;
+            flex: 0 0 calc(50% - 20px);
+            background-color: #f8f4e3;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        img {
+            width: 100%;
+            max-height: none;
+            margin: 10px;
+            border-radius: 5px;
+            max-height: 400px;
+            object-fit: cover; /* 이미지의 비율 유지하며 채우기 */
+            cursor: pointer; /* 클릭 가능한 커서로 변경 */
+        }
+
+        figcaption {
+            color: #333;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #f8f4e3;
+            color: #000;
+            border: none;
+            border-top: none;
+        }
+
+        footer p {
+            font-size: 14px; /* 저작권 표시 글자 크기 조절 */
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 5px;
+        }
+
+        button {
+            border: none; /* 테두리 없애기 */
+            background-color: #fff; /* 배경색 흰색으로 변경 */
+            padding: 5px 10px; /* 내부 여백 추가 */
+            cursor: pointer;
+            border-radius: 5px; /* 둥근 모서리 적용 */
+            margin: 0 auto; /* 가운데 정렬 */
+            display: block; /* 가로로 중앙 정렬을 위해 block 속성 적용 */
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap">
+</head>
+<body>
+    <header>
+        <h1>Insect Observation Book</h1>
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" onkeyup="searchPhotos()" placeholder="사진 검색">
+                <select id="categoryFilter" onchange="filterByCategory()">
+                    <option value="분류">분류</option>
+                    <option value="all">전체</option>
+                    <option value="나비목">나비목</option>
+                    <option value="벌목">벌목</option>
+                    <option value="메뚜기목">메뚜기목</option>
+                    <option value="딱정벌레목">딱정벌레목</option>
+                    <option value="노린재목">노린재목</option>
+                    <option value="잠자리목">잠자리목</option>
+                    <option value="하루살이목">하루살이목</option>
+                    <option value="사마귀목">사마귀목</option>
+                    <option value="파리목">파리목</option>
+                    <option value="집게벌레목">집게벌레목</option>
+                    <option value="대벌레목">대벌레목</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="sortByDate()">최신순 정렬</button>
+    </header>
+
+    <section id="photoSection">
+        <figure data-date="2027-03-10" onclick="openOverlay('표지.png', '표지', '분류')">
+            <img src="표지.png" alt="표지" data-category="분류">
+            <figcaption></figcaption>
+        </figure>
+        <figure data-date="2022-08-13" onclick="openOverlay('거꾸로여덟팔나비.JPG', '거꾸로여덟팔나비', '나비목')">
+            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
+            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
+        </figure>
+        <figure data-date="2023-03-10" onclick="openOverlay('path/to/your/photo3.jpg', '사진 설명 3', '메뚜기목')">
+            <img src="path/to/your/photo3.jpg" alt="사진 설명 3" data-category="메뚜기목">
+            <figcaption>사진 설명 3</figcaption>
+        </figure>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Jaebin Lee. All rights reserved.</p>
+    </footer>
+
+    <!-- 오버레이 창 -->
+    <div id="overlay" onclick="closeOverlay()">
+        <img id="overlayImage" src="" alt="">
+    </div>
+
+    <script>
+        function filterByCategory() {
+            var selectedCategory = document.getElementById("categoryFilter").value;
+            var photos = document.querySelectorAll("#photoSection figure");
+
+            photos.forEach(function (photo) {
+                var category = photo.querySelector("img").getAttribute("data-category");
+
+                if (selectedCategory === "all" || category === selectedCategory) {
+                    photo.style.display = "block";
+                } else {
+                    photo.style.display = "none";
+                }
+            });
+        }
+
+        function openOverlay(imagePath, description, category) {
+            var overlay = document.getElementById("overlay");
+            var overlayImage = document.getElementById("overlayImage");
+
+            overlayImage.src = imagePath;
+            overlayImage.alt = description;
+            overlay.style.display = "flex";
+        }
+
+        function closeOverlay() {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
+
+        // 사진 정렬 함수 추가
+        function sortByDate() {
+            var section = document.getElementById("photoSection");
+            var figures = Array.from(section.getElementsByTagName("figure"));
+
+            figures.sort(function(a, b) {
+                var dateA = new Date(a.getAttribute("data-date"));
+                var dateB = new Date(b.getAttribute("data-date"));
+
+                return dateB - dateA; // 최신순으로 정렬
+            });
+
+            // 정렬된 순서대로 다시 추가
+            figures.forEach(function(figure) {
+                section.appendChild(figure);
+            });
+        }
+
+        // 페이지 로드 시 최신순으로 정렬
+        window.onload = function() {
+            sortByDate();
+        };
+    </script>
+</body>
+</html>
