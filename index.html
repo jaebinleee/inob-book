@@ -72,7 +72,6 @@
             background-color: #f8f4e3;
             padding: 10px;
             border-radius: 5px;
-            margin: 10px;
         }
 
         img {
@@ -87,6 +86,7 @@
             color: #333;
             margin-top: 5px;
             font-size: 11px;
+            margin-bottom: 5px;
         }
 
         footer {
@@ -154,29 +154,7 @@
         <figure data-date="2022-08-11">
             <img src="곧은띠비단명나방.jpg" alt="곧은띠비단명나방" data-category="나비목">
             <figcaption><i>Hypsopygia glaucinalis </i>(Linnaeus, 1758)<br>2022.8.11. 강원도 태백시 태백산 <strong>곧은띠비단명나방</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
-        </figure><figure data-date="2022-08-13">
-            <img src="거꾸로여덟팔나비.JPG" alt="거꾸로여덟팔나비" data-category="나비목">
-            <figcaption><i>Araschnia burejana </i>(Bremer, 1861)<br>2022.8.13. 강원도 태백시 태백산 <strong>거꾸로여덟팔나비</strong></figcaption>
         </figure>
-
         <figure data-date="2023-03-10">
             <img src="path/to/your/photo3.jpg" alt="사진 설명 3" data-category="메뚜기목">
             <figcaption>사진 설명 3</figcaption>
@@ -229,6 +207,19 @@
                 section.appendChild(figure);
             });
         }
+
+        function searchPhotos() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var photos = document.querySelectorAll("#photoSection figure");
+
+            photos.forEach(function (photo) {
+                var description = photo.querySelector("img").alt.toLowerCase();
+
+                if (description.includes(input)) {
+                    photo.style.display = "block";
+                } else {
+                    photo.style.display = "none";
+                }
 
         // 페이지 로드 시 최신순으로 정렬
         window.onload = function() {
