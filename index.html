@@ -139,7 +139,7 @@
                 </select>
             </div>
         </div>
-        <button onclick="sortByDate()">최신순 정렬</button>
+
     </header>
 
     <section id="photoSection">
@@ -173,7 +173,10 @@
                 // 페이지 로드 시 초기 카테고리 설정
                 document.getElementById("categoryFilter").value = "분류";
                 filterByCategory();
-              });
+
+                // 페이지 로드 시 최신순으로 정렬
+                sortByDate();
+        });
 
         function filterByCategory() {
             var selectedCategory = document.getElementById("categoryFilter").value;
@@ -220,11 +223,9 @@
                 } else {
                     photo.style.display = "none";
                 }
+            });
+        }
 
-        // 페이지 로드 시 최신순으로 정렬
-        window.onload = function() {
-            sortByDate();
-        };
     </script>
 </body>
 </html>
